@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+
+  <Commands package="guidCleanCommandsPackage">
+    <Groups>
+      <Group guid="guidCleanProjectCommandPackageCmdSet" id="CleanProjectCommandMenuGroup" priority="0x0000">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE"/>
+      </Group>
+      <Group guid="guidCleanSolutionCommandPackageCmdSet" id="CleanSolutionCommandMenuGroup" priority="0x0000">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNNODE"/>
+      </Group>
+    </Groups>
+
+    <Buttons>
+      <Button guid="guidCleanProjectCommandPackageCmdSet" id="CleanProjectCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidCleanProjectCommandPackageCmdSet" id="CleanProjectCommandMenuGroup" />
+        <Strings>
+          <ButtonText>Delete bin and obj folders</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidCleanSolutionCommandPackageCmdSet" id="CleanSolutionCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidCleanSolutionCommandPackageCmdSet" id="CleanSolutionCommandMenuGroup" />
+        <Strings>
+          <ButtonText>Delete packages, bin and obj folders</ButtonText>
+        </Strings>
+      </Button>      
+    </Buttons>   
+  </Commands>
+  
+  <KeyBindings>
+    <KeyBinding guid="guidCleanSolutionCommandPackageCmdSet" id="CleanSolutionCommandId" editor="guidVSStd97" key1="VK_DELETE"  mod1="Control Shift"  />    
+  </KeyBindings>
+
+  <Symbols>
+    <GuidSymbol name="guidCleanCommandsPackage" value="{f1dcc2f3-4efd-4579-9566-b29ef5f54d2a}" />
+    <GuidSymbol name="guidCleanProjectCommandPackageCmdSet" value="{a16645a7-f9c7-48c0-9dab-92afd47265c4}">
+      <IDSymbol name="CleanProjectCommandMenuGroup" value="0x1020" />
+      <IDSymbol name="CleanProjectCommandId" value="0x0100" />
+    </GuidSymbol>
+    <GuidSymbol name="guidCleanSolutionCommandPackageCmdSet" value="{a16645a7-f9c7-48c0-9dab-92afd47265c5}">
+      <IDSymbol name="CleanSolutionCommandMenuGroup" value="0x1021" />
+      <IDSymbol name="CleanSolutionCommandId" value="0x0101" />
+    </GuidSymbol> 
+  </Symbols>
+</CommandTable>
