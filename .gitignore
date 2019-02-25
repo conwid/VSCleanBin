@@ -183,6 +183,8 @@ PublishScripts/
 **/[Pp]ackages/*
 # except build/, which is used as an MSBuild target.
 !**/[Pp]ackages/build/
+# Hack: the BuildTools package must be checked in
+!**/[Pp]ackages/Microsoft.VSSDK.BuildTools.15.9.3041/
 # Uncomment if necessary however generally it will be regenerated when needed
 #!**/[Pp]ackages/repositories.config
 # NuGet v3's project.json files produces more ignorable files
