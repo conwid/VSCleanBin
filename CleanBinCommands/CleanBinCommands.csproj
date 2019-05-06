@@ -61,15 +61,19 @@
       <DependentUpon>CleanProjectCommandPackage.vsct</DependentUpon>
     </Compile>
     <Compile Include="Commands\CleanCommandBase.cs" />
-    <Compile Include="Commands\CleanSolutionCommand.cs" />
     <Compile Include="Commands\CleanProjectCommand.cs" />
     <Compile Include="CleanProjectCommandPackage.cs" />
+    <Compile Include="Commands\CleanSolutionCommand.cs" />
+    <Compile Include="Commands\CleanSolutionCommandBase.cs" />
+    <Compile Include="Commands\CleanSolutionWithoutPackagesCommand.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Services\ErrorHandlerService.cs" />
     <Compile Include="Services\IErrorHandlerService.cs" />
     <Compile Include="Services\IProjectFolderSerivce.cs" />
+    <Compile Include="Services\IVsOutputPaneService.cs" />
     <Compile Include="Services\ProjectFolderSerivce.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\VsOutputPaneService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.png">

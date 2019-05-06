@@ -11,14 +11,17 @@ namespace CleanBinCommands.Commands
     {
         protected readonly IProjectFolderSerivce projectFolderService;
         protected readonly IErrorHandlerService errorHandlerService;
+        private readonly IVsOutputPaneService vsOutputPaneService;
         protected CleanCommandBase(IProjectFolderSerivce projectFolderService,
                                    IErrorHandlerService errorHandlerService,
+                                   IVsOutputPaneService vsOutputPaneService,
                                    OleMenuCommandService commandService, Guid guidPackageCmdSet, int commandId)
         {
             if (commandService == null)
                 throw new ArgumentNullException(nameof(commandService));
             this.projectFolderService = projectFolderService ?? throw new ArgumentNullException(nameof(projectFolderService));
             this.errorHandlerService = errorHandlerService ?? throw new ArgumentNullException(nameof(errorHandlerService));
+            this.vsOutputPaneService = vsOutputPaneService ?? throw new ArgumentNullException(nameof(vsOutputPaneService));
             var menuCommandID = new CommandID(guidPackageCmdSet, commandId);
             var menuItem = new MenuCommand(this.Execute, menuCommandID);
             commandService.AddCommand(menuItem);
@@ -33,7 +36,7 @@ namespace CleanBinCommands.Commands
             try
             {
                 Directory.Delete(folder, true);
-                errorHandlerService.WriteMessage($"Folder {folder} deleted");
+                vsOutputPaneService.WriteMessage($"Folder {folder} deleted");
             }
             catch (Exception ex)
             {

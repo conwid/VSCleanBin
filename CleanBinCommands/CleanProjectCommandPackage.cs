@@ -34,11 +34,14 @@ namespace CleanBinCommands
         protected override async Task InitializeAsync(CancellationToken cancellationToken, IProgress<ServiceProgressData> progress)
         {
             await this.JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
-            projectFolderService = new ProjectFolderSerivce((DTE2)GetGlobalService(typeof(SDTE)));            
-            errorHandlerService = new ErrorHandlerService((IVsOutputWindowPane)await GetServiceAsync(typeof(SVsGeneralOutputWindowPane)));
+            projectFolderService = new ProjectFolderSerivce((DTE2)GetGlobalService(typeof(SDTE)));
+            var vsOutputPane = (IVsOutputWindowPane)await GetServiceAsync(typeof(SVsGeneralOutputWindowPane));
+            var vsOutputPaneService = new VsOutputPaneService(vsOutputPane);
+            errorHandlerService = new ErrorHandlerService(vsOutputPaneService);
             OleMenuCommandService commandService = await this.GetServiceAsync((typeof(IMenuCommandService))) as OleMenuCommandService;
-            new CleanSolutionCommand(projectFolderService, errorHandlerService, commandService);
-            new CleanProjectCommand(projectFolderService, errorHandlerService, commandService);
+            new CleanSolutionCommand(projectFolderService, errorHandlerService, vsOutputPaneService, commandService);
+            new CleanSolutionWithoutPackagesCommand(projectFolderService, errorHandlerService, vsOutputPaneService, commandService);
+            new CleanProjectCommand(projectFolderService, errorHandlerService, vsOutputPaneService, commandService);
         }
     }
 }

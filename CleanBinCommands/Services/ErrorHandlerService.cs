@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualStudio.Shell.Interop;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,20 +8,13 @@ namespace CleanBinCommands.Services
 {
     public class ErrorHandlerService : IErrorHandlerService
     {
-        private readonly IVsOutputWindowPane generalOutputWindowPane;
-
-        public ErrorHandlerService(IVsOutputWindowPane generalOutputWindowPane)
+        private readonly IVsOutputPaneService vsOutputPaneService;
+        public ErrorHandlerService(IVsOutputPaneService vsOutputPaneService)
         {
-            this.generalOutputWindowPane = generalOutputWindowPane ?? throw new ArgumentNullException(nameof(generalOutputWindowPane));
+            this.vsOutputPaneService = vsOutputPaneService ?? throw new ArgumentNullException(nameof(vsOutputPaneService));
         }
 
-        public void WriteErrorMessage(string message, Exception ex) => WriteMessage($"Error: {message}; {ex}");
-        public void WriteErrorMessage(string message) => WriteMessage($"Error: {message}");
-
-        public void WriteMessage(string message)
-        {
-            Microsoft.VisualStudio.Shell.ThreadHelper.ThrowIfNotOnUIThread();
-            this.generalOutputWindowPane.OutputStringThreadSafe(message);
-        }
+        public void WriteErrorMessage(string message, Exception ex) => vsOutputPaneService.WriteMessage($"Error: {message}; {ex}");
+        public void WriteErrorMessage(string message) => vsOutputPaneService.WriteMessage($"Error: {message}");       
     }
 }

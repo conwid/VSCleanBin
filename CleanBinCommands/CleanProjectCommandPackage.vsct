@@ -12,6 +12,9 @@
       <Group guid="guidCleanSolutionCommandPackageCmdSet" id="CleanSolutionCommandMenuGroup" priority="0x0000">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNNODE"/>
       </Group>
+      <Group guid="guidCleanSolutionWithoutPackagesCommandPackageCmdSet" id="CleanSolutionWithoutPackagesCommandMenuGroup" priority="0x0000">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNNODE"/>
+      </Group>
     </Groups>
 
     <Buttons>
@@ -26,7 +29,13 @@
         <Strings>
           <ButtonText>Delete packages, bin and obj folders</ButtonText>
         </Strings>
-      </Button>      
+      </Button>
+      <Button guid="guidCleanSolutionWithoutPackagesCommandPackageCmdSet" id="CleanSolutionWithoutPackagesCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidCleanSolutionWithoutPackagesCommandPackageCmdSet" id="CleanSolutionWithoutPackagesCommandMenuGroup" />
+        <Strings>
+          <ButtonText>Delete bin and obj folders</ButtonText>
+        </Strings>
+      </Button>
     </Buttons>   
   </Commands>
   
@@ -43,6 +52,10 @@
     <GuidSymbol name="guidCleanSolutionCommandPackageCmdSet" value="{a16645a7-f9c7-48c0-9dab-92afd47265c5}">
       <IDSymbol name="CleanSolutionCommandMenuGroup" value="0x1021" />
       <IDSymbol name="CleanSolutionCommandId" value="0x0101" />
-    </GuidSymbol> 
+    </GuidSymbol>
+    <GuidSymbol name="guidCleanSolutionWithoutPackagesCommandPackageCmdSet" value="{a16645a7-f9c7-48c0-9dab-92afd47265c6}">
+      <IDSymbol name="CleanSolutionWithoutPackagesCommandMenuGroup" value="0x1022" />
+      <IDSymbol name="CleanSolutionWithoutPackagesCommandId" value="0x0102" />
+    </GuidSymbol>
   </Symbols>
 </CommandTable>

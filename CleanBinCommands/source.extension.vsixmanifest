@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="CleanBinCommands.7ad4e025-fe4e-4b88-83fb-763db3524fcc" Version="0.9" Language="en-US" Publisher="CONWID" />
+        <Identity Id="CleanBinCommands.7ad4e025-fe4e-4b88-83fb-763db3524fcc" Version="1.0" Language="en-US" Publisher="CONWID" />
         <DisplayName>Clean Bin</DisplayName>
         <Description xml:space="preserve">A simple Visual Studio extension that adds an option to delete the bin and obj folders to both the context menus of solutions and C# projects, with default key bindings.</Description>
         <MoreInfo>https://dotnetfalcon.com/a-visual-studio-extension-to-really-clean-your-projects</MoreInfo>
