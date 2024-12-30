@@ -21,9 +21,42 @@ namespace CleanBinCommands.Services
             this.dte = dte;
         }
 
-        public List<Project> GetSolutionProjects() => dte.Solution.Projects.Cast<Project>()
-                                                         .Where(p => SafeIsNotNullOrEmpty(p))
-                                                         .ToList();
+        public List<Project> GetSolutionProjects()
+        {
+
+            var projects = dte.Solution.Projects.Cast<Project>()
+                                             .Where(p => SafeIsNotNullOrEmpty(p))
+                                             .ToList();
+
+            List<Project> solutionFolders = dte.Solution.Projects.Cast<Project>().Where(p => p.Object is SolutionFolder).ToList();
+
+            foreach (Project solutionFolder in solutionFolders)
+            {
+               GetSolutionFolderProjects(solutionFolder, projects);
+            }
+
+            return projects;
+
+        }
+
+        public void GetSolutionFolderProjects(Project solutionFolder, List<Project> total)
+        {
+            foreach (ProjectItem folderMember in solutionFolder.ProjectItems)
+            {
+                if (folderMember.Object == null)
+                    continue;
+
+                var memberProject = (Project)folderMember.Object;
+                if (SafeIsNotNullOrEmpty(memberProject))
+                {
+                    total.Add(memberProject);
+                }
+                else
+                {
+                    GetSolutionFolderProjects((Project)folderMember.Object,total);
+                }
+            }
+        }
 
         private bool SafeIsNotNullOrEmpty(Project p)
         {

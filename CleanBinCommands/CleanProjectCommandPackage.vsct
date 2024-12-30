@@ -15,6 +15,11 @@
       <Group guid="guidCleanSolutionWithoutPackagesCommandPackageCmdSet" id="CleanSolutionWithoutPackagesCommandMenuGroup" priority="0x0000">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNNODE"/>
       </Group>
+
+      <Group guid="guidCleanSolutionFolderCommandPackageCmdSet" id="CleanSolutionFolderCommandMenuGroup" priority="0x0000">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNFOLDER"/>
+      </Group>
+      
     </Groups>
 
     <Buttons>
@@ -30,17 +35,26 @@
           <ButtonText>Delete packages, bin and obj folders</ButtonText>
         </Strings>
       </Button>
+      
       <Button guid="guidCleanSolutionWithoutPackagesCommandPackageCmdSet" id="CleanSolutionWithoutPackagesCommandId" priority="0x0100" type="Button">
         <Parent guid="guidCleanSolutionWithoutPackagesCommandPackageCmdSet" id="CleanSolutionWithoutPackagesCommandMenuGroup" />
         <Strings>
           <ButtonText>Delete bin and obj folders</ButtonText>
         </Strings>
       </Button>
-    </Buttons>   
+
+      <Button guid="guidCleanSolutionFolderCommandPackageCmdSet" id="CleanSolutionFolderCommandId" priority="0x0100" type="Button">
+        <Parent guid="guidCleanSolutionFolderCommandPackageCmdSet" id="CleanSolutionFolderCommandMenuGroup" />
+        <Strings>
+          <ButtonText>Delete bin and obj folders</ButtonText>
+        </Strings>
+      </Button>
+
+    </Buttons>
   </Commands>
-  
+
   <KeyBindings>
-    <KeyBinding guid="guidCleanSolutionCommandPackageCmdSet" id="CleanSolutionCommandId" editor="guidVSStd97" key1="VK_DELETE"  mod1="Control Shift"  />    
+    <KeyBinding guid="guidCleanSolutionCommandPackageCmdSet" id="CleanSolutionCommandId" editor="guidVSStd97" key1="VK_DELETE"  mod1="Control Shift"  />
   </KeyBindings>
 
   <Symbols>
@@ -57,5 +71,11 @@
       <IDSymbol name="CleanSolutionWithoutPackagesCommandMenuGroup" value="0x1022" />
       <IDSymbol name="CleanSolutionWithoutPackagesCommandId" value="0x0102" />
     </GuidSymbol>
+
+    <GuidSymbol name="guidCleanSolutionFolderCommandPackageCmdSet" value="{a16645a7-f9c7-48c0-9dab-92afd47265c7}">
+      <IDSymbol name="CleanSolutionFolderCommandMenuGroup" value="0x1023" />
+      <IDSymbol name="CleanSolutionFolderCommandId" value="0x0103" />
+    </GuidSymbol>
+    
   </Symbols>
 </CommandTable>

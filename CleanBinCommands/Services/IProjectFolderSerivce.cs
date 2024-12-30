@@ -9,5 +9,6 @@ namespace CleanBinCommands.Services
         string GetProjectRootFolder(Project project);
         List<Project> GetSolutionProjects();
         string GetSolutionRootFolder();
+        void GetSolutionFolderProjects(Project solutionFolder, List<Project> total);
     }
 }

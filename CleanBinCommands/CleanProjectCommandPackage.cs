@@ -42,6 +42,8 @@ namespace CleanBinCommands
             new CleanSolutionCommand(projectFolderService, errorHandlerService, vsOutputPaneService, commandService);
             new CleanSolutionWithoutPackagesCommand(projectFolderService, errorHandlerService, vsOutputPaneService, commandService);
             new CleanProjectCommand(projectFolderService, errorHandlerService, vsOutputPaneService, commandService);
+            new CleanSolutionFolderCommand(projectFolderService, errorHandlerService, vsOutputPaneService, commandService);
+
         }
     }
 }
